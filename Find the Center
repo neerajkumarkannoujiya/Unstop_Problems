@@ -1,0 +1,89 @@
+Once upon a time in a distant land, Saurav and Vikas set out to explore a star-shaped graph. This unique graph had 'n' nodes, with one special node known as the center, connected to all other nodes through 'n - 1' edges.
+
+They were given a scroll called 'edges' revealing connections between nodes as 'edges[i] = [ui, vi]'.
+
+Vikas, Aimed to identify the center node hidden within this magical graph. Their quest was to unveil this mystery and find the label of the elusive center node, where all paths converged.
+
+Input Format
+First line of input contains n, the number of edges that will be available for input in the next line
+
+Second line of input contains n pairs of intergers which are all space separated representing the starting and ending of edge.
+
+Output Format
+Output the node that is the centre of the given star graph.
+
+Constraints
+3 <= n <= 10^5
+
+1 <= ui, vi <= n
+
+ 
+Sample Testcase 0
+Testcase Input
+4
+1 3
+2 3
+4 3
+5 3
+Testcase Output
+3
+Explanation
+In this scenario, node 3 is directly connected to all other nodes (1, 2, 4, and 5), making it the center of the star graph.
+
+Sample Testcase 1
+Testcase Input
+5
+1 2
+2 3
+3 1
+4 1
+5 1
+Testcase Output
+1
+
+
+
+
+
+
+
+
+
+********************************************************************************************************************************************
+
+
+
+
+
+
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        Map<Integer,Integer> mp = new HashMap<>();
+        for(int i = 0;i<n;i++){
+            int a = sc.nextInt();
+            int b = sc.nextInt();
+            mp.put(a,mp.getOrDefault(a,0)+1);
+            mp.put(b,mp.getOrDefault(b,0)+1);
+        }
+        int ele = Integer.MIN_VALUE;
+        int max = Integer.MIN_VALUE;
+        for(Map.Entry<Integer,Integer> val : mp.entrySet()){
+            if(val.getValue()>max){
+                ele = val.getKey();
+                max = val.getValue();
+            }
+
+        }
+        System.out.println(ele);
+    }
+}
